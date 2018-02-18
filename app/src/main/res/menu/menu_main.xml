@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_ujbeteg"
+        android:title="@string/ujbeteg_gomb"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:orderInCategory="300"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/menu_ujszerv"
+        android:title="@string/ujszerv_gomb"
+        android:orderInCategory="400"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/menu_frissites"
+        android:title="@string/frissites_gomb"
+        android:icon="@drawable/ic_refresh_white_24dp"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"></item>
+</menu>
