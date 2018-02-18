@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UjBetegActivity"></activity>
+        <activity android:name=".UjBetegActivity" />
+        <activity android:name=".UjSzervActivity"></activity>
     </application>
 
 </manifest>

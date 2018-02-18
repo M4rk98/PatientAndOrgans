@@ -7,14 +7,18 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
                 DbHelper helper = DbHelper.getInstance(MainActivity.this);
                 SQLiteDatabase db = helper.getWritableDatabase();
 
-                ListView betegLista = (ListView)findViewById(R.id.beteg_lista);
+                ListView betegLista = (ListView) findViewById(R.id.beteg_lista);
+
 
                 ArrayList<Beteg> lista = new ArrayList<>();
                 Cursor cursor = db.query(
                         "beteg",
-                        new String[] { "id", "nev", "taj", "szerv", "tipus", "szerv_id" },
+                        new String[]{"id", "nev", "taj", "szerv", "tipus", "szerv_id"},
                         null,
                         null,
                         null,
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 cursor.close();
 
+
                 ArrayAdapter<Beteg> adapter = new ArrayAdapter<Beteg>(
                         MainActivity.this,
                         android.R.layout.simple_list_item_1,
@@ -69,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void getAllPatient()
+    {
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -77,12 +88,25 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent;
+
         switch (item.getItemId()) {
             case R.id.menu_ujbeteg:
-                Intent intent = new Intent(this, UjBetegActivity.class);
+                intent = new Intent(this, UjBetegActivity.class);
                 startActivity(intent);
-
                 return true;
+
+            case R.id.menu_ujszerv:
+                intent = new Intent(this, UjSzervActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.menu_frissites:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
